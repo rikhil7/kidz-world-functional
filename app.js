@@ -123,10 +123,16 @@ function updatePrice() {
 
 cartButton.onclick = () => {
   updatePrice();
-
+  if(cartValue.innerText == 0){
+    alert("You must have atleast one item in your shopping cart")
+    return
+  }
+ 
+  var text = ""
 
   for (let index = 0; index < items.length; index++) {
     if (items[index].quantity != 0) {
+      text += "Item name: " + items[index].name + " - Quantity: " + items[index].quantity + " "
       console.log(
         "Item name: " +
           items[index].name +
@@ -136,7 +142,13 @@ cartButton.onclick = () => {
     }
   }
 
+
+  text += "The total amount is " + finalDollars + "$ and " + finalCents + " cents"+" "
+  console.log("text : ", text)
+
   console.log(
     "The total amount is " + finalDollars + "$ and " + finalCents + " cents"
   );
+
+  window.open("https://wa.me/7814127186?text="+text, "_self")
 };
